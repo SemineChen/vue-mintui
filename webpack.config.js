@@ -4,7 +4,7 @@ var webpack = require('webpack')
 module.exports = {
     entry: './src/main.js',
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.join(__dirname, './dist'),
         publicPath: '/dist/',
         filename: 'build.js'
     },
@@ -68,7 +68,8 @@ module.exports = {
                 options: {
                     name: '[name].[ext]?[hash]'
                 }
-            }
+            },
+            { test: /\.(ttf|eot|svg|woff|woff2)$/, use: ['url-loader?limit=7645&name=[hash:8]-[name].[ext]'] }
         ]
     },
     resolve: {
