@@ -1,78 +1,64 @@
 <template>
-<div class="appcontent">
+  <div class="app-container">
 
-  
-     <div>
-            <mt-header fixed title="vue是我的第一次尝试"></mt-header>
-     </div>
-     <div class="main">
-         <router-view></router-view>
-     </div>
-       
+    <!-- 顶部 Header 区域 -->
+    <mt-header fixed title="黑马程序员·Vue项目"></mt-header>
 
 
-      <div class="bottom">
-            <router-link id="tab1" to='/home'>
-            <div>首页</div>
-             </router-link>
-            <router-link id="tab2" to='/mall'>
-
-            <div>商城</div>
-             </router-link>
-            <router-link id="tab3" to='/shopcar'>
-
-            <div>购物车</div>
-             </router-link>
-            <router-link id="tab4" to='/mine'>
-
-            <div>我的</div>
-            </router-link>      
-    </div>
-
-</div>
+    <!-- 中间的 路由 router-view 区域 -->
+		<transition>
+			<router-view></router-view>
+		</transition>
 
 
+    <!-- 底部 Tabbar 区域 -->
+    <nav class="mui-bar mui-bar-tab">
+			<router-link class="mui-tab-item" to="/home">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/member">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">会员</span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/shopcar">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
+					<span class="mui-badge">0</span>
+				</span>
+				<span class="mui-tab-label">购物车</span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/search">
+				<span class="mui-icon mui-icon-search"></span>
+				<span class="mui-tab-label">搜索</span>
+			</router-link>
+		</nav>
+
+  </div>
 </template>
 
 <script>
-// export default {
-//     name: 'app',
-//     data () {
-//       return {selected: '首页'}
-//     },
-//     watch: {
-//       selected: function (val, oldVal) {
-//         console.log(val)
-//         // click后打印出当前mt-tab-item的id
-//       }
-//     }
-//   }
 </script>
 
-<style lang="scss" scoped>
-.appcontent{
-      padding-top:40px;
-}
-.bottom{
-      height: 40px;
-      position: fixed;
-      bottom:0px;
-      background: #f4f4f4;
-      width:100%;
-}
-.bottom div{
-    float: left;
-    width: 20%;
-    text-align: center;
-    color:#333
-}
-.active div{
-      color: rebeccapurple;
-}
-// .main{
-//       height: 500px;
-//       width: 500px;
-//       background: #333;
-// }
 
+<style lang="scss" scoped>
+.app-container {
+  padding-top: 40px;
+  overflow-x: hidden;
+}
+
+.v-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+  position: absolute;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.5s ease;
+}
 </style>

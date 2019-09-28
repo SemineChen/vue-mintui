@@ -1,26 +1,34 @@
+// 入口文件
 import Vue from 'vue'
-//引入icon font文件
-import './assets/iconfont/iconfont.css'
+// 1.1 导入路由的包
+import VueRouter from 'vue-router'
+// 1.2 安装路由
+Vue.use(VueRouter)
 
-//按需导入mint-ui的header部分(这个需要在引入组件之前)
-import { Header } from 'mint-ui';
-Vue.component(Header.name, Header);
-//导入mint-ui底部部分
-import { Tabbar, TabItem } from 'mint-ui';
-Vue.component(Tabbar.name, Tabbar);
-Vue.component(TabItem.name, TabItem);
 
-//导入自己编写的组件
-import App from './App.vue'
-//导入路由
+
+// 导入 MUI 的样式
+import './lib/mui/css/mui.min.css'
+// 导入扩展图标样式
+import './lib/mui/css/icons-extra.css'
+
+
+// 按需导入 Mint-UI 中的组件   
+import { Header, Swipe, SwipeItem } from 'mint-ui'
+Vue.component(Header.name, Header)
+Vue.component(Swipe.name, Swipe)
+Vue.component(SwipeItem.name, SwipeItem)
+
+
+// 1.3 导入自己的 router.js 路由模块
 import router from './router.js'
 
 
-var Vm = new Vue({
+// 导入 App 根组件
+import app from './App.vue'
+
+var vm = new Vue({
     el: '#app',
-    // data: {
-    //     msg: 'nicaicacdwa'
-    // },
-    render: h => h(App), //通过render函数渲染到页面中去
-    router //挂载路由
+    render: c => c(app),
+    router // 1.4 挂载路由对象到 VM 实例上
 })

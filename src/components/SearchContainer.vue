@@ -1,7 +1,6 @@
 <template>
 <div>
-  
-我是主页
+我是我的空间
 
 </div>
 
@@ -9,6 +8,7 @@
 </template>
 
 <script>
+
 
 </script>
 
